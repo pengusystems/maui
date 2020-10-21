@@ -1,14 +1,16 @@
 # MAUI
 
-This repository demonstrates work by **Pengu Systems**. It includes work related to RADAR:
-* FMCW RADAR prototyping with MATLAB
-* Pulsed RADAR prototyping with Vivado HLS 
+This repository demonstrates work by **Pengu Systems**. It includes some HDL examples and work related to RADAR:
+* [FMCW RADAR prototyping with MATLAB](./docs/fmcw_radar/)
+* [Pulsed RADAR prototyping with Vivado HLS](./src/libs/pulsed_radar/)
+* [HDL examples](./src/libs/hdl_examples/)
 
 Repository is structured as follows:
 ```bash
 ├── src
 │   ├── libs
-│   │   ├── ip_repo
+│   │   ├── hdl_examples
+│   │   ├── pulsed_radar
 │   │   ├── ...
 ├── ext
 ├── docs
