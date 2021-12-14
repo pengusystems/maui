@@ -1,6 +1,6 @@
 module sreg #(
 	parameter WIDTH  = 4,
-	parameter DEPTH = 3,
+	parameter DEPTH = 3
 )
 (
 	input clk,
@@ -23,7 +23,7 @@ module sreg #(
 	//                                            Design starts here                                          //
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Input.
-	assign sr[0] = d;
+	//assign sr[0] = d;
 
 	// The shift register.
 	always @(posedge clk)
@@ -35,6 +35,7 @@ module sreg #(
 		end
 		else if (ce) begin
 			for (integer ii = 1; ii < DEPTH; ii = ii+1) begin
+				sr[0] <= d;
 				sr[ii] <= sr[ii-1];
 			end
 		end

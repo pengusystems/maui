@@ -31,9 +31,6 @@ architecture behavioral of sreg is
 	--                                            Design starts here                                          --
 	------------------------------------------------------------------------------------------------------------
 begin
-	-- Input.
-	sr(0) <= d;
-
 	-- The shift register.
 	process (clk)
 	begin
@@ -43,6 +40,7 @@ begin
 				s(ii) <= (other => '0');
 			end generate;
 		elsif (ce = '1') then
+			sr(0) <= d;
 			SREG_CE : for ii in 1 to DEPTH generate
 				sr(ii) <= sr(ii-1);
 			end generate;
