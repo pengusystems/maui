@@ -20,13 +20,13 @@ target_link_libraries(serialport PRIVATE
 	${CMAKE_THREAD_LIBS_INIT}
 )
 
-# Add the test executable
-add_executable(serialport_test
-	"serialport_test.cpp"
+# Add the micro terimnal executable
+add_executable(serialport_microterm
+	"serialport_microterm.cpp"
 )
-target_include_directories(serialport_test PRIVATE
+target_include_directories(serialport_microterm PRIVATE
 	${REPO_LIBS_DIR}
 )
-target_link_libraries(serialport_test PRIVATE
+target_link_libraries(serialport_microterm PRIVATE
 	serialport
 )

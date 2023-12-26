@@ -7,7 +7,7 @@ using namespace std::chrono_literals;
 int main(int argc, char *argv[]) {
 	// Get command line arguments.
 	if (argc == 1) {
-		std::cout << "Usage: serialport_test <port name> [baud_rate = 115200]" << std::endl;
+		std::cout << "Usage: serialport_test <port name> [baud_rate = 115200] [terminator = \\n]" << std::endl;
 		return 1;
 	}
 	auto baudrate = 115200;
@@ -19,6 +19,10 @@ int main(int argc, char *argv[]) {
 		catch(...) {
 			std::cout << "Illegal baud rate, using 115200" << std::endl;
 		}
+	}
+	std::string terminator = "\n";
+	if (argc > 3) {
+		terminator = argv[3];
 	}
 
 	// The async receive callback
@@ -32,7 +36,7 @@ int main(int argc, char *argv[]) {
 		}
 	};
 
-	// Start the serial port and occasionally send stuff.
+	// Start the serial port and send when the user presses return.
 	serialport port;
 	port.set_cb_on_recv(on_recv);
 	if (!port.start(argv[1], serialport::options(baudrate))) {
@@ -42,8 +46,9 @@ int main(int argc, char *argv[]) {
 	}
 	std::cout << "Successfully opened " << argv[1] << std::endl;
 	while(1) {
-		std::this_thread::sleep_for(0.5s);
-		port.send("test");
+		std::string message;
+		std::cin >> message;
+		port.send(message + terminator);
 	}
 	return 0;
 }
