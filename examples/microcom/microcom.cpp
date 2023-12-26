@@ -1,8 +1,5 @@
 #include <iostream>
-#include <thread>
-#include "serialport.h"
-
-using namespace std::chrono_literals;
+#include "serialport/serialport.h"
 
 int main(int argc, char *argv[]) {
 	// Get command line arguments.
