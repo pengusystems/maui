@@ -7,7 +7,7 @@
 #define ASIO_STANDALONE
 #endif
 #ifdef __linux__
-#include "sys/file.h"
+#include <sys/file.h>
 #endif
 #include <mutex>
 #include <thread>
@@ -182,7 +182,8 @@ bool serialport::start(const std::string& port_name, const options& options) {
 	m_pimpl->running = true;
 	m_pimpl->async_read_some();
 
-	// IO service must be started after the read.
+	// IO service must be started after the read so the run call will block.
+	// Note asio handlers are only invoked by the thread that is currently calling any overload of run(), run_one(), poll() or poll_one() for the io_service.
 	m_pimpl->io_service_thread = std::thread([&]{m_pimpl->io_service.run(); });
 	return true;
 }
