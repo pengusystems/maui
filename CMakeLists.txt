@@ -58,6 +58,7 @@ endif (UNIX)
 set(REPO_EXT_DIR ${CMAKE_SOURCE_DIR}/ext)
 set(REPO_LIBS_DIR ${CMAKE_SOURCE_DIR}/examples)
 set(REPO_EXT_BUILD_DIR ${CMAKE_BINARY_DIR}/../../ext)
+set(REPO_CMAKE_SCRIPTS_DIR ${CMAKE_SOURCE_DIR}/cmake)
 
 # This will export functions to shared libraries (only relevant on Windows)
 add_compile_definitions(

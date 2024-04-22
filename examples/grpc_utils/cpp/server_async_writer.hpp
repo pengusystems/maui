@@ -9,6 +9,17 @@
 #include "grpcpp/support/server_callback.h"
 #include "concurrentqueue/blockingconcurrentqueue.h"
 
+// Usage example:
+// 1. Override grpc function with:
+// grpc::ServerWriteReactor<Foo>* server::ListenToFoo(grpc::CallbackServerContext* context, const ListenToFooRequest* req) {
+// 	return writer_store_Foo->add_writer();
+// }
+//
+// 2. Create an instance:
+// writer_store_Foo = std::make_unique<grpc_utils::server::callback::async_writer_store<Foo>>(4);
+//
+// 3. Add messages asynchrnously from producers.
+// writer_store_Foo->async_write(Foomsg);
 namespace grpc_utils::server::callback {
 	enum async_writer_state {
 		stale,

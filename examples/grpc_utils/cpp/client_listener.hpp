@@ -9,6 +9,12 @@
 // Reference:
 // https://lastviking.eu/fun_with_gRPC_and_C++/callback-client.html
 // https://github.com/jgaa/fun-with-gRPC/blob/main/src/callback-client/callback-client-impl.hpp
+// Usage example:
+// grpc::Status ListenToFoo(const ListenToFooRequest& req, const cb_on_stream_msg<Foo>& on_msg, const cb_on_stream_done& on_stream_done = {}) {
+// 	listener_Foo = std::make_unique<grpc_utils::client::callback::listener<Foo>>(grpc_utils::client::create_context({.set_deadline = false}), on_msg_int, std::bind(&client::on_stream_done_int, m_client.get(), on_stream_done, "Foo", channel_id, std::placeholders::_1));
+// 	stub->async()->ListenToFoo(listener_Foo->get_context(), &req, listener_Foo.get());
+// 	listener_Foo->start();
+// }
 namespace grpc_utils::client::callback {
 	enum listener_state {
 		stale,
