@@ -1,5 +1,5 @@
 #!/bin/bash
-#This script will only build C++ based examples.
+#This script will only build C++ stuff.
 #Operating systems supported:
 # * All
 set -e
