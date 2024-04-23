@@ -9,6 +9,7 @@
 // These macros will only work with rpcs that convey to a specific naming convention: rpc Foo(FooRequest) returns (FooReply);
 template<typename T>
 using cb_on_unary = std::function<void(const grpc::Status&, const T&)>;
+constexpr int unary_rpc_default_deadline_ms = 500;
 #define Unary_rpcRequest_rpcReply_header(rpc, deadline) void API_EXPORT rpc(const rpc ## Request& req, const bool sync = false, const cb_on_unary<rpc ## Reply>& cb = {}, const unsigned int deadline_ms = deadline, const int channel_id = 0)
 #define Unary_rpcRequest_rpcReply_impl(parent, rpc) void parent::rpc(const rpc ## Request& req, const bool sync, const cb_on_unary<rpc ## Reply>& cb, const unsigned int deadline_ms, const int channel_id)
 
