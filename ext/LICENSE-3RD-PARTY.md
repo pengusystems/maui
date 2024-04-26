@@ -1,16 +1,16 @@
 # 3RD PARTY LICENSES
 * [asio](https://github.com/chriskohlhoff/asio)\
-	[Boost Software License, Version 1.0](https://www.boost.org/LICENSE_1_0.txt)
+  [Boost Software License, Version 1.0](https://www.boost.org/LICENSE_1_0.txt)
 
 * [concurrentqueue](https://github.com/cameron314/concurrentqueue)\
-	Copyright (c) 2013-2016, Cameron Desrochers. All rights reserved.\
-	[Simplified BSD License](https://opensource.org/license/bsd-2-clause) or [Boost Software License, Version 1.0](https://www.boost.org/LICENSE_1_0.txt)
+  Copyright (c) 2013-2016, Cameron Desrochers. All rights reserved.\
+  [Simplified BSD License](https://opensource.org/license/bsd-2-clause) or [Boost Software License, Version 1.0](https://www.boost.org/LICENSE_1_0.txt)
 
 * [gRPC](https://github.com/grpc/grpc)\
-	[Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+  [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
 
-## LICENSE TEXTS
+## License Texts
 
 ### Boost Software License - Version 1.0 - August 17th, 2003
 ```
