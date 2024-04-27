@@ -26,7 +26,7 @@ namespace core2::input {
 		if(m_pimpl->fd < 0) throw std::runtime_error("Can't open /dev/uinput/ - check permissions");
 		ioctl(m_pimpl->fd, UI_SET_EVBIT, EV_KEY);
 		constexpr auto last_key_code_supported = 255;
-		for(auto ii = 0; ii <= last_key_code_supported; ii++) ioctl(m_pimpl->fd, UI_SET_KEYBIT, ii);
+		for (auto ii = 0; ii <= last_key_code_supported; ii++) ioctl(m_pimpl->fd, UI_SET_KEYBIT, ii);
 		ioctl(m_pimpl->fd, UI_SET_EVBIT, EV_SYN);
 		uinput_user_dev uidev;
 		std::memset(&uidev, 0, sizeof(uidev));
