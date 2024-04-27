@@ -12,11 +12,25 @@ do
     esac
 done
 
+# Get the system name.
+uname_out="$(uname -s)"
+case "${uname_out}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Windows;;
+    MINGW*)     machine=Windows;;
+    *)          machine="UNKNOWN:${uname_out}"
+esac
+
 cd $repo_root/scripts/cpp/
 echo Build C/C++ All
 echo
 echo
-./build_ext_grpc.sh -b $build_type
+if [ $machine == "Linux" ]; then
+	./build_ext_grpc.sh -b #$build_type
+else
+    echo Skipping build_ext_grpc.sh
+fi
 echo
 echo
 ./build_maui.sh -b $build_type
