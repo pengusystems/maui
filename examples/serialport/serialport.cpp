@@ -224,7 +224,7 @@ size_t serialport::send(const u8* buf, const size_t& size) {
 
 bool serialport::async_send(std::shared_ptr<std::vector<u8>> buf, const size_t& size, const cb_on_async_send& on_send) {
 	if (!m_pimpl->running) {
-		return -1;
+		return false;
 	}
 	if (!m_pimpl->port->is_open() || m_pimpl->async_write_in_progress) {
 		on_send(std::error_code(), 0);
@@ -253,7 +253,7 @@ bool serialport::async_send(std::shared_ptr<std::vector<u8>> buf, const size_t& 
 
 bool serialport::async_send(std::shared_ptr<std::string> buf, const cb_on_async_send& on_send) {
 	if (!m_pimpl->running) {
-		return -1;
+		return false;
 	}
 	if (!m_pimpl->port->is_open() || m_pimpl->async_write_in_progress) {
 		on_send(std::error_code(), 0);
