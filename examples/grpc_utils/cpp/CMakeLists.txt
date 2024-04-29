@@ -1,7 +1,3 @@
-# Configure grpc stuff.
-include(${REPO_CMAKE_SCRIPTS_DIR}/grpc_config.cmake)
-grpc_config()
-
 # This is an interface library.
 file(GLOB SRC_FILES
 	"*.h"
@@ -13,7 +9,7 @@ add_library(grpc_utils INTERFACE
 
 # Includes.
 target_include_directories(grpc_utils INTERFACE
-	${GRPC_INCLUDE_DIRS}
+	${REPO_EXT_BUILD_DIR}/grpc/build/install/include
 	${REPO_LIBS_DIR}
 	${REPO_EXT_DIR}
 )
