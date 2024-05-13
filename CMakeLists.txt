@@ -65,4 +65,3 @@ add_compile_definitions(
 
 # Add subdirectories.
 add_subdirectory(./examples)
-add_subdirectory(./ext)
