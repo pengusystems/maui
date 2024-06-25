@@ -70,7 +70,7 @@ namespace core0 {
 		}
 
 		// Restarting:
-		// If we want to restart a timer with was started with auto_restart = false, use the following scheme:
+		// If we want to restart a timer which was started with auto_restart = false, use the following scheme:
 		//   stop_sync()
 		//   start()
 
