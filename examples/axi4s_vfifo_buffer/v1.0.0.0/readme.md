@@ -1,5 +1,5 @@
 # axi4s_vfifo_buffer
-This component provides a MIG (Memory interface Generator) based (external DDR memory) fifo buffering scheme (virtual fifo) for high bandwidth, multi channel, async, axi4 streams. It is platform dependent due to the nature of MIG. The objective of this component is to optimize the overall input to output throughput while providing large buffers in between. This is particularly useful as an elastic buffer for axi streams that cannot take back-pressure. **It is important to note that the instances created based on this reference must be tuned for design specifics.**
+This component provides a MIG (Memory interface Generator) based (external DDR memory) fifo buffering scheme (virtual fifo) for high bandwidth, multi channel, async, axi4 streams. It is platform dependent due to the nature of MIG. The objective of this component is to optimize the overall input to output throughput while providing large buffers in between. This is particularly useful as an elastic buffer for axi streams that cannot take back-pressure. **In addition to the `tdest` requirement mentioned below, keep in mind that the instances created based on this reference must be tuned for design specifics.**
 
 ## Implementation details
 ![Block diagram](./axi4s_vfifo_buffer.png)
@@ -18,6 +18,7 @@ Each channel conditioner includes a combination of:
 
 ### Mux/Demux of multiple axi4 stream channels
 The virtual fifo IP has a single axi stream interface. It implements multi channel buffering based on the axi stream `tdest` signal. As a result, an arbitration scheme must be used to grant channel access. On the output side, a demux uses `tdest` to distribute the axi streams to different output fifos. 
+**:information_source:The input axi streams must be fill in `tdest` such that channel `i` uses `tdest` of `i`. This is critical for the arbitration scheme to work correctly**
 
 ### Output fifos
 The output buffer size should be determined by the weight allocation and burst size as described [here](#xilinx-virtual-fifo-ip)
