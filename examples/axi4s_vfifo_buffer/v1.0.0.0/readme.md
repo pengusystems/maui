@@ -17,7 +17,7 @@ Each channel conditioner includes a combination of:
 2. Packet fifos (data is available on the fifo's output interface only after `tlast` was received on the fifo's input interface). Packet fifos are critical for per channel reset (by flushing data through the output interface) since the virtual fifo IP only has a single global reset. Any axi stream packets contained in the `vfifo_clk` domain must be complete or else the flush will leave traces behind.
 
 ### Mux/Demux of multiple axi4 stream channels
-The virtual fifo IP has a single axi stream interface. It implements multi channel buffering based on the axi stream `tdest` signal. As a result, an arbitration scheme must be used to grant channel access. On the output side, a demux uses `tdest` to distribute the axi streams to different output fifos. 
+The virtual fifo IP has a single axi stream interface. It implements multi channel buffering based on the axi stream `tdest` signal. As a result, an arbitration scheme must be used to grant channel access. On the output side, a demux uses `tdest` to distribute the axi streams to different output fifos.\
 **:information_source:The input axi streams must be fill in `tdest` such that channel `i` uses `tdest` of `i`. This is critical for the arbitration scheme to work correctly**
 
 ### Output fifos
