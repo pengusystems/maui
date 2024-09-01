@@ -26,9 +26,9 @@ The virtual fifo IP has a single axi stream interface. It implements multi chann
 ### Output fifos
 The output buffer size should be determined by the AR weight allocation and burst size as described [here](#xilinx-virtual-fifo-ip)
 
-### Reset
+### Global reset and channel flushing
 This components should be reset before initial use by toggling `vfifo_aresetn` (Note that **[resets should only be applied when clocks are stable](https://support.xilinx.com/s/question/0D52E00006hpgGfSAI/builtin-fifo-reset?language=en_US)**).\
-Individual channel buffer reset is based on a flushing scheme as described below. This scheme does not guarantee that all the data is flushed and a new capture could trail with old data:
+Individual channels cannot be reset, howwever, they can be flushed using a scheme such as the one described below. Note that this scheme does not guarantee a complete flushed of the channel since residual data can still remain in the channel conditioners.
 1. Stop the input stream. This can be done using a custom axi4 stream component
 2. Flush the channel by asserting `m_tready` of the output interface until it is empty.
 3. Wait long enough for the channel `vfifo_clk` domain side buffers to completely empty out. Depending on factors such as packet size and output fifo size, the data on the output interface might come out back-to-back and then tvalid could be used to indicate when the channel is empty. Otherwise, this phase must be based on a waited timeout.
