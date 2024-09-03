@@ -291,7 +291,7 @@ proc create_hier_cell_ch_output_3 { parentCell nameHier } {
    CONFIG.FIFO_MODE {2} \
    CONFIG.HAS_PROG_FULL {1} \
    CONFIG.IS_ACLK_ASYNC {0} \
-   CONFIG.PROG_FULL_THRESH {128} \
+   CONFIG.PROG_FULL_THRESH {256} \
  ] $axis_data_fifo_3
 
   # Create instance: axis_register_slice_3, and set properties
@@ -363,7 +363,7 @@ proc create_hier_cell_ch_output_2 { parentCell nameHier } {
    CONFIG.FIFO_MODE {2} \
    CONFIG.HAS_PROG_FULL {1} \
    CONFIG.IS_ACLK_ASYNC {0} \
-   CONFIG.PROG_FULL_THRESH {128} \
+   CONFIG.PROG_FULL_THRESH {256} \
  ] $axis_data_fifo_2
 
   # Create instance: axis_register_slice_2, and set properties
@@ -435,7 +435,7 @@ proc create_hier_cell_ch_output_1 { parentCell nameHier } {
    CONFIG.FIFO_MODE {2} \
    CONFIG.HAS_PROG_FULL {1} \
    CONFIG.IS_ACLK_ASYNC {0} \
-   CONFIG.PROG_FULL_THRESH {128} \
+   CONFIG.PROG_FULL_THRESH {256} \
  ] $axis_data_fifo_1
 
   # Create instance: axis_register_slice_1, and set properties
@@ -507,7 +507,7 @@ proc create_hier_cell_ch_output_0 { parentCell nameHier } {
    CONFIG.FIFO_MODE {2} \
    CONFIG.HAS_PROG_FULL {1} \
    CONFIG.IS_ACLK_ASYNC {0} \
-   CONFIG.PROG_FULL_THRESH {128} \
+   CONFIG.PROG_FULL_THRESH {256} \
  ] $axis_data_fifo_0
 
   # Create instance: axis_register_slice_0, and set properties
