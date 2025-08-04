@@ -6,6 +6,9 @@ set(CMAKE_DEBUG_POSTFIX "" CACHE STRING "" FORCE)
 mark_as_advanced(CMAKE_DEBUG_POSTFIX)
 #set(CMAKE_FIND_DEBUG_MODE TRUE) # uncomment to show path included in search of popular find_* commands, requires cmake 3.18 or newer.
 
+# Generate a compile_commands.json (useful for clangd ignored with some generators such as msvc).
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Append __cplusplus to correctly identify c++ version in msvc.
 # In debug mode only (msvc), replace Debug information flag /Zi with /ZI to allow Edit & Continue (C++ & x86/x64 only): https://docs.microsoft.com/en-us/cpp/build/reference/z7-zi-zi-debug-information-format?view=msvc-160
 if(MSVC)
@@ -55,8 +58,9 @@ if (UNIX)
 endif (UNIX)
 
 # Repo global path directories
-set(REPO_EXT_DIR ${CMAKE_SOURCE_DIR}/ext)
-set(REPO_LIBS_DIR ${CMAKE_SOURCE_DIR}/examples)
+set(REPO_EXT_BUILD_DIR ${CMAKE_BINARY_DIR}/../../ext)
+set(REPO_LIBS_DIR ${CMAKE_SOURCE_DIR}/src/libs)
+set(REPO_SCRIPTS_DIR ${CMAKE_SOURCE_DIR}/scripts)
 
 # This will export functions to shared libraries (only relevant on Windows)
 add_compile_definitions(
@@ -64,4 +68,4 @@ add_compile_definitions(
 )
 
 # Add subdirectories.
-add_subdirectory(./examples)
+add_subdirectory(./src)

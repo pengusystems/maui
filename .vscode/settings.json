@@ -1,0 +1,23 @@
+{
+	"scm.diffDecorations": "overview",
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"**/build/sw/cmake/CMakeFiles/" : true,
+		"**/build/sw/cmake/ext" : true,
+		"**/build/sw/cmake/scripts" : true,
+		"**/build/sw/cmake/.cache" : true,
+		"**/build/sw/cmake/src" : true,
+	},
+	"clangd.arguments": [
+		"--header-insertion=never"
+		// For clangd to not mark 3rd party headers in hpp\h files missing.
+		// https://clangd.llvm.org/faq#what-can-i-do-if-clangd-chooses-the-wrong-source-file-to-infer-commands-for-a-header
+		// https://stackoverflow.com/questions/76250587/vscode-clangd-failed-to-find-my-header-file-not-found-clangpp-file-not-found
+		// **We have compdb and build_male.sh script can be setup to use it but it slows down the compilation so it is currently disabled**
+	]
+}
